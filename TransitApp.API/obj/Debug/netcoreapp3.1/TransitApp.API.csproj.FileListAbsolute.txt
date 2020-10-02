@@ -58,3 +58,11 @@
 /Users/sarakhandaker/Projects/Transit App/TransitApp.API/obj/Debug/netcoreapp3.1/TransitApp.API.dll
 /Users/sarakhandaker/Projects/Transit App/TransitApp.API/obj/Debug/netcoreapp3.1/TransitApp.API.pdb
 /Users/sarakhandaker/Projects/Transit App/TransitApp.API/obj/Debug/netcoreapp3.1/TransitApp.API.genruntimeconfig.cache
+/Users/sarakhandaker/Projects/Transit App/TransitApp.API/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/sarakhandaker/Projects/Transit App/TransitApp.API/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/sarakhandaker/Projects/Transit App/TransitApp.API/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Logging.dll
+/Users/sarakhandaker/Projects/Transit App/TransitApp.API/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.dll
+/Users/sarakhandaker/Projects/Transit App/TransitApp.API/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/sarakhandaker/Projects/Transit App/TransitApp.API/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Tokens.dll
+/Users/sarakhandaker/Projects/Transit App/TransitApp.API/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+/Users/sarakhandaker/Projects/Transit App/TransitApp.API/bin/Debug/netcoreapp3.1/System.IdentityModel.Tokens.Jwt.dll
