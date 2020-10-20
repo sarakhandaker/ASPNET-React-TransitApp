@@ -1,18 +1,62 @@
-<form #registerForm="ngForm" (ngSubmit)="register()">
-  <h2 class="text-center text-primary">Sign Up</h2>
-  <hr>
+import React, { PureComponent } from 'react';
 
-  <div class="form-group">
-    <input type="text" class="form-control" required name="username" [(ngModel)]="model.username" placeholder="Username">
-  </div>
+class Register extends PureComponent {
+    state = {
+        register: false
+    }
+    toggleRegister= ()=> {
+        this.setState({register: !this.state.register})
+    }
+    render() {
+        return (
+            <>
+                {this.state.register ?
+                    <form>
+                        <h2 className="text-center text-primary">Sign Up</h2>
+                        <hr />
 
-  <div class="form-group">
-    <input type="password" class="form-control" required name="password" [(ngModel)]="model.password" placeholder="Password">
-  </div>
+                        <div className="form-group">
+                            <input type="text" className="form-control" required name="username" placeholder="Username" />
+                        </div>
 
-  <div class="form-group text-center">
-    <button class="btn btn-success" type="submit">Register</button>
-    <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
-  </div>
-  
-</form>
+                        <div className="form-group">
+                            <input type="password" className="form-control" required name="password" placeholder="Password" />
+                        </div>
+
+                        <div className="form-group">
+                            <input type="text" className="form-control" required name="address" placeholder="Address" />
+                        </div>
+
+                        <div className="form-group text-center">
+                            <button className="btn btn-success" type="submit">Register</button>
+                            <button className="btn btn-default" type="button">Cancel</button>
+                        </div>
+                    </form>
+
+                    :
+                    <div class="container mt-5">
+                        <div style={{ "text-align": "center" }}>
+                            <h1>Find and save all your King County Metro Stops</h1>
+                            <p class="lead">Come on in... All you need to do is sign up!</p>
+                            <div class="text-center">
+                                <button class="btn btn-primary btn-lg mr-2" onClick= {this.toggleRegister}>Register</button>
+                                <button class="btn btn-info btn-lg">Learn more</button>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </>
+        )
+    }
+}
+
+export default Register;
