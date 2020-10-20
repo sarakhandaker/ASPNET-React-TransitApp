@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace TransitApp.API.Models
 {
     public class User
@@ -9,6 +11,8 @@ namespace TransitApp.API.Models
         public string Address { get; set; }
         public double Lat { get; set; }
         public double Lon { get; set; }
+
+        public ICollection<UserStops> UserStops {get; set;}
 
     }
 }

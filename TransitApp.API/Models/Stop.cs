@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace TransitApp.API.Models
 {
     public class Stop
@@ -13,6 +15,7 @@ namespace TransitApp.API.Models
     public string LocationType { get; set; }
     public string ParentStation { get; set; }
     public string StopTimezone { get; set; }
+    public ICollection<UserStops> UserStops {get; set;}
         
     }
 }
