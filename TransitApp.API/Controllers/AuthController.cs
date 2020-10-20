@@ -36,7 +36,8 @@ namespace TransitApp.API.Controllers
 
             var userToCreate = new User
             {
-                Username = userForRegisterDto.Username
+                Username = userForRegisterDto.Username,
+                Address = userForRegisterDto.Address
             };
 
             var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);

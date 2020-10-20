@@ -10,5 +10,6 @@ namespace TransitApp.API.Dtos
         [Required]
         [StringLength(8, MinimumLength=6, ErrorMessage= "Password must be between 6 and 8 characters")]
         public string Password { get; set; }
+        public string Address {get; set;}
     }
 }

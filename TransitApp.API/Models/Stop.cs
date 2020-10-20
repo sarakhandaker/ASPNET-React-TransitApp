@@ -4,6 +4,7 @@ namespace TransitApp.API.Models
 {
     public class Stop
     {
+    public int Id { get; set; }
     public int StopIdKC { get; set; }
     public int StopCode { get; set; }
     public string StopName { get; set; }
