@@ -12,7 +12,7 @@ namespace TransitApp.API.Models
         public double Lat { get; set; }
         public double Lon { get; set; }
 
-        public ICollection<UserStops> UserStops {get; set;}
+        public ICollection<UserStop> UserStops {get; set;}
 
     }
 }

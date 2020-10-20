@@ -1,6 +1,6 @@
 namespace TransitApp.API.Models
 {
-    public class UserStops
+    public class UserStop
     {
         public User User {get; set;}
         public int UserId { get; set; }
