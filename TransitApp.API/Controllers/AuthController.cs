@@ -42,7 +42,11 @@ namespace TransitApp.API.Controllers
 
             var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
 
-            return StatusCode(201);
+            var newDto= new UserForLoginDto();
+            newDto.Password= userForRegisterDto.Password;
+            newDto.Username=userForRegisterDto.Username;
+
+            return await this.Login(newDto);
         }
 
         [HttpPost("login")]
