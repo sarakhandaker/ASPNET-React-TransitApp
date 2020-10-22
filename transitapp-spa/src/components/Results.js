@@ -15,11 +15,25 @@ class Results extends Component {
         )
     }
 
+    makeList=()=>{
+        return this.state.stops.map(stop => <li><i className="fa fa-bus mr-2"></i>{stop.stopName}</li>)
+    }
+
     render() {
-        const {stops } = this.state
+        const { stops } = this.state
         return (
-            <div>
-                <LeafletMap address={this.props.address} stops={stops}></LeafletMap>
+            <div className="container mt-3 pt-3 mb-3">
+                <div className="row">
+                    <div className="col-sm-4" style={{ "backgroundColor": "rgba(255, 255, 255)" }}>
+                        <h2> Closest Bus Stops To {this.props.name}: </h2>
+                        <ul style={{"listStyle": "none"}}>
+                        {stops? this.makeList(): null}
+                        </ul>
+                    </div>
+                    <div className="col-sm-8">
+                        <LeafletMap address={this.props.address} stops={stops}></LeafletMap>
+                    </div>
+                </div>
             </div>
         );
     }

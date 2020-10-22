@@ -8,14 +8,16 @@ export class Search extends Component {
     
        state = {
              address:"",
+             addressName:"",
              stops:[],
              error: false
         }
 
     handleSubmit=(address)=>{
+        this.setState({ addressName: address})
         fetch(URL + address).then(resp => resp.json()).then(resp => {
             if (resp.results[0].locations[0]){
-            this.setState({ address: resp.results[0].locations[0].latLng })
+            this.setState({ address: resp.results[0].locations[0].latLng})
             }
             else {
                 this.setState({ error: true })
@@ -24,11 +26,11 @@ export class Search extends Component {
     }
 
     render() {
-        const {error, address}= this.state
+        const {error, address, addressName}= this.state
         return (
             <div>
                 {error? <Alert variant="primary"> Please Submit a Valid Address </Alert>: null}
-            {address.lat ? <Results address={address}/> : <StopSearchForm handleSubmit= {this.handleSubmit}/>}
+            {address.lat ? <Results name={addressName} address={address}/> : <StopSearchForm handleSubmit= {this.handleSubmit}/>}
             </div>
         )
     }
