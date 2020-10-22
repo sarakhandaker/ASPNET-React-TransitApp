@@ -38,7 +38,7 @@ class Register extends PureComponent {
     render() {
         const { username, password, address } = this.state
         return (
-            <div className="container mt-5 p-2" style={{ "backgroundColor": "rgba(255, 255, 255, 0.75)" }}>
+            <div className="container mt-5 p-5" style={{ "backgroundColor": "rgba(255, 255, 255, 0.8)" }}>
                 {this.state.register ?
                     <form onSubmit={this.handleLogin}>
                         <h2 className="text-center text-primary">Sign Up</h2>

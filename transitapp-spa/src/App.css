@@ -19,7 +19,7 @@
 
 
 body {
-  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/King_County_Metro_8160.jpg/800px-King_County_Metro_8160.jpg);
+  background-image: url("imageedit_1_7083840254.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -27,7 +27,9 @@ body {
   overflow: auto;
 }
 
+
+
 .leaflet-container {
   width: 100%;
-  height: 80vh;
+  height: 70vh;
 }

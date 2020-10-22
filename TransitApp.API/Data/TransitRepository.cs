@@ -36,7 +36,7 @@ namespace TransitApp.API.Data
             var coord = new GeoCoordinate(lat, lon);
             var closeStops = _context.Stops.AsEnumerable()
                 .OrderBy(stop => new GeoCoordinate(stop.StopLat, stop.StopLon).GetDistanceTo(coord))
-                .Take(3).ToList();
+                .Take(5).ToList();
             return closeStops;
         }
 

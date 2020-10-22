@@ -25,12 +25,16 @@ export class Search extends Component {
             })
     }
 
+    reset=()=>{
+        this.setState({ address: ""})
+    }
+
     render() {
         const {error, address, addressName}= this.state
         return (
             <div>
                 {error? <Alert variant="primary"> Please Submit a Valid Address </Alert>: null}
-            {address.lat ? <Results name={addressName} address={address}/> : <StopSearchForm handleSubmit= {this.handleSubmit}/>}
+            {address.lat ? <Results loggedIn={this.props.loggedIn} reset={this.reset} name={addressName} address={address}/> : <StopSearchForm handleSubmit= {this.handleSubmit}/>}
             </div>
         )
     }

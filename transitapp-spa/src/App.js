@@ -17,7 +17,7 @@ const App= () => {
     <Router>
       <Route path="/" render={props => <NavBar {...props} loggedIn={decodedToken}/>} />
       <Route path="/home" render={props => <Home {...props}/>} />
-      <Route path="/search" render={props => <Search {...props}/>} />
+      <Route path="/search" render={props => <Search loggedIn={decodedToken} {...props}/>} />
       <Route exact path="/"> <Redirect to="/home"/></Route>
     </Router>
   </Fragment>
