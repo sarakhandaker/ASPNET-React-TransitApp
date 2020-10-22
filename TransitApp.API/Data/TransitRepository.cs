@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TransitApp.API.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Device.Location;
+using System.Linq;
 
 namespace TransitApp.API.Data
 {
@@ -10,7 +12,7 @@ namespace TransitApp.API.Data
         public DataContext _context { get; }
         public TransitRepository(DataContext context)
         {
-           _context = context;
+            _context = context;
 
         }
         public void Add<T>(T entity) where T : class
@@ -20,24 +22,27 @@ namespace TransitApp.API.Data
 
         public void Delete<T>(T entity) where T : class
         {
-             _context.Remove(entity);
+            _context.Remove(entity);
         }
 
         public async Task<User> GetUser(int id)
         {
-            var user= await _context.Users.Include(p => p.UserStops).FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.Include(p => p.UserStops).FirstOrDefaultAsync(u => u.Id == id);
             return user;
         }
 
         public async Task<IEnumerable<Stop>> GetClosestStops(double lat, double lon)
         {
-             var stops= await _context.Stops.ToListAsync();
-             return stops;
+            var coord = new GeoCoordinate(lat, lon);
+            var closeStops = _context.Stops.AsEnumerable()
+                .OrderBy(stop => new GeoCoordinate(stop.StopLat, stop.StopLon).GetDistanceTo(coord))
+                .Take(3).ToList();
+            return closeStops;
         }
 
         public async Task<bool> SaveAll()
         {
-           return await _context.SaveChangesAsync() > 0;
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }

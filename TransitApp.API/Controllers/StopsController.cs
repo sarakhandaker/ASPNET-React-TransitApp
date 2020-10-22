@@ -16,10 +16,8 @@ namespace TransitApp.API.Controllers
     public class StopsController : ControllerBase
     {
         public ITransitRepository _repo { get; }
-        public IMapper _mapper { get; }
-        public StopsController(ITransitRepository repo, IMapper mapper)
+        public StopsController(ITransitRepository repo)
         {
-            _mapper = mapper;
             _repo = repo;
         }
 
