@@ -43,10 +43,26 @@ const editUser=(data, id)=>{
         .then(r => r.json())
 }
 
+const closest=(address)=>{
+  return fetch(`${API_ROOT}stops/${address}`, {
+       method: 'GET',
+       headers: headers()
+   }).then(response => 
+    response.json().then(data => ({
+        data: data,
+        status: response.status
+    })
+)
+)
+}
+
 export const api = {
   auth: {
     login,
     register,
     editUser
+  },
+  stop: {
+    closest
   }
 };
