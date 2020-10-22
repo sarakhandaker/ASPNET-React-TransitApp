@@ -11,7 +11,7 @@ namespace TransitApp.API.Data
 
          Task<bool> SaveAll();
 
-         Task<IEnumerable<Stop>> GetStops();
+         Task<IEnumerable<Stop>> GetClosestStops(double lat, double lon);
 
          Task<User> GetUser(int id);
 

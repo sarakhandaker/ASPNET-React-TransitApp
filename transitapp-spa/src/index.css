@@ -20,3 +20,7 @@ code {
   width: 100%;
   vertical-align: middle;
 }
+
+.sign-out {
+  cursor: pointer;
+}

@@ -29,7 +29,7 @@ namespace TransitApp.API.Data
             return user;
         }
 
-        public async Task<IEnumerable<Stop>> GetStops()
+        public async Task<IEnumerable<Stop>> GetClosestStops(double lat, double lon)
         {
              var stops= await _context.Stops.ToListAsync();
              return stops;
