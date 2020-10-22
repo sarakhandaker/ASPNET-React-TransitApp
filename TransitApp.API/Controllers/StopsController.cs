@@ -21,11 +21,12 @@ namespace TransitApp.API.Controllers
             _repo = repo;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetClosestStops()
+        [HttpGet("{location}")]
+        public async Task<IActionResult> GetClosestStops(string location)
         {
-            var Stops = await _repo.GetClosestStops(47.705559,-122.331388);
-            // var userToReturn= _mapper.Map<UserForDetailedDto>(user);
+            float lat= float.Parse(location.Substring(0, 9));
+            float lon= float.Parse(location.Substring(9,9));
+            var Stops = await _repo.GetClosestStops(lat,-lon);
             return Ok(Stops);
         }
     }
