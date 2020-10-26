@@ -27,7 +27,7 @@ namespace TransitApp.API.Data
 
         public async Task<User> GetUser(int id)
         {
-            var user = await _context.Users.Include(p => p.UserStops).FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.Include(p => p.UserStops).ThenInclude(x => x.Stop).FirstOrDefaultAsync(u => u.Id == id);
             return user;
         }
 

@@ -16,10 +16,8 @@ namespace TransitApp.API.Controllers
     public class UsersController : ControllerBase
     {
         public ITransitRepository _repo { get; }
-        public IMapper _mapper { get; }
-        public UsersController(ITransitRepository repo, IMapper mapper)
+        public UsersController(ITransitRepository repo)
         {
-            _mapper = mapper;
             _repo = repo;
         }
 
@@ -27,8 +25,7 @@ namespace TransitApp.API.Controllers
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repo.GetUser(id);
-            var userToReturn= _mapper.Map<UserForDetailedDto>(user);
-            return Ok(userToReturn);
+            return Ok(user);
         }
 
         // [HttpPut("{id}")]

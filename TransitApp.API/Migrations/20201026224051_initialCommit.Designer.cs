@@ -9,8 +9,8 @@ using TransitApp.API.Data;
 namespace TransitApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201020202500_AddedStops")]
-    partial class AddedStops
+    [Migration("20201026224051_initialCommit")]
+    partial class initialCommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,40 +93,23 @@ namespace TransitApp.API.Migrations
 
             modelBuilder.Entity("TransitApp.API.Models.UserStop", b =>
                 {
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("StopId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Label")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("StopId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
+                    b.HasKey("UserId", "StopId");
 
                     b.HasIndex("StopId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("UserStop");
-                });
-
-            modelBuilder.Entity("TransitApp.API.Models.Value", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Values");
                 });
 
             modelBuilder.Entity("TransitApp.API.Models.UserStop", b =>
