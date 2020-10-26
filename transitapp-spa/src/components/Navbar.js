@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Dropdown } from 'react-bootstrap'
+import {Alert} from 'react-bootstrap'
 import { api } from '../services/api'
 import { Link } from 'react-router-dom'
 
@@ -40,19 +41,21 @@ class NavBar extends PureComponent {
     }
 
     render() {
-        const { username, password } = this.state
+        const { username, password, error } = this.state
+        const {loggedIn} =this.props
         return (
+            <>
             <nav className="navbar navbar-expand-md navbar-dark bg-primary">
                 <div className="container-fluid row">
                     <Link to='/home' className="navbar-brand">King County Transit App</Link>
                     <ul className="navbar-nav mr-auto">
-                        {this.props.loggedIn ? <Link to='/saved' ><li className="nav-item nav-link"> Saved Bus Stops</li></Link> : null}
+                        {loggedIn ? <Link to='/saved' ><li className="nav-item nav-link"> Saved Bus Stops</li></Link> : null}
                         <Link to='/search'><li className="nav-item nav-link">Search For a Stop</li></Link>
                     </ul>
-                    {this.props.loggedIn ?
+                    {loggedIn ?
                         <Dropdown>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                Welcome {this.props.loggedIn.unique_name}</Dropdown.Toggle>
+                                Welcome {loggedIn.unique_name.charAt(0).toUpperCase() + loggedIn.unique_name.slice(1)}</Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item>Edit your Address</Dropdown.Item>
                                 <Dropdown.Item className="sign-out" onClick={this.handleLogout}> <i className="fa fa-sign-out sign-out"></i>Logout</Dropdown.Item>
@@ -67,6 +70,8 @@ class NavBar extends PureComponent {
                     }
                 </div>
             </nav>
+            {error? <Alert className="text-right" variant="danger"> Invalid Username and Password </Alert>: null}
+            </>
         )
     }
 }

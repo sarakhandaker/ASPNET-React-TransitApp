@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import {Alert} from 'react-bootstrap'
 import { api } from '../services/api'
 
 class Register extends PureComponent {
@@ -36,11 +37,12 @@ class Register extends PureComponent {
     }
 
     render() {
-        const { username, password, address } = this.state
+        const { username, password, address, error } = this.state
         return (
             <div className="container mt-5 p-5" style={{ "backgroundColor": "rgba(255, 255, 255, 0.8)" }}>
                 {this.state.register ?
                     <form onSubmit={this.handleLogin}>
+                        {error? <Alert className="text-center" variant="danger"> {error} </Alert>: null}
                         <h2 className="text-center text-primary">Sign Up</h2>
                         <hr />
 
