@@ -27,7 +27,7 @@ class Results extends Component {
 
     makeList = () => {
         return this.state.stops.map(stop =>
-            <li className="mb-3">
+            <li key={stop.id} className="mb-3">
                 <div className="row" >
                     <i className="fa fa-bus mr-2"></i>
                     <p>{stop.stopName}</p>
