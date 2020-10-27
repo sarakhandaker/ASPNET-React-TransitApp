@@ -12,18 +12,15 @@ class UserStops extends Component {
             this.setState({ user: r.data }))
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.decodedToken !== prevProps.decodedToken){
+    componentDidUpdate() {
             this.getUsers()
-        }
     }
-
     makeList = () => {
         return this.state.user.userStops.map(stop =>
-            <li className="mb-3">
+            <li key={stop.id} className="mb-3">
                 <div className="row" >
                     <i className="fa fa-bus mr-2"></i>
-                    <p>{stop.label} - {stop.stop.stopName}</p>
+                    <p><strong>{stop.label}</strong> - {stop.stop.stopName}</p>
                 </div>
                 <button onClick={this.props.reset} className="btn btn-success btn-sm mr-auto">Delete Stop</button>
             </li>)
