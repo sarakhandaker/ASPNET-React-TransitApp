@@ -16,6 +16,7 @@ function LeafletMap(props) {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
+            <Marker position={[lat, lng]}/>
             {stops.map(stop => <Marker icon={bus} key={stop.id} position={[stop.stopLat, stop.stopLon]}
                 onClick={() => { setActiveStop(stop); }} />)}
             {activeStop && (

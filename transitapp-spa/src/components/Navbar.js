@@ -15,7 +15,7 @@ class NavBar extends PureComponent {
     handleLogout = () => {
         localStorage.clear()
         this.props.history.push("/home");
-        // window.location.reload();
+        window.location.reload();
     }
 
     handleChange = (event) => {
