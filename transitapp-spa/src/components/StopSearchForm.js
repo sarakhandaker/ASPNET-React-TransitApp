@@ -29,7 +29,7 @@ export class Form extends Component {
                     </div>
                     <div className="form-group justify-content-md-center row">
                         <label className="col-form-label">Address: </label>
-                        <div class="col-sm-6">
+                        <div className="col-sm-6">
                             <input className="form-control" placeholder="address" onChange={this.handleOnChange} name="address" />
                         </div>
                         <input type="submit" className="btn btn-primary" value="Submit" />

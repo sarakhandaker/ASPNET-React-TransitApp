@@ -20,6 +20,15 @@ const login = data => {
   )
 }
 
+const getUserStops = id => {
+  return fetch(`${API_ROOT}users/${id}`, {
+    method: 'GET',
+    headers: headers()
+  }).then(response => response.json()
+    .then(data => ({ data: data, status: response.status }))
+  )
+}
+
 const register = data => {
   return fetch(`${API_ROOT}auth/register`, {
     method: 'POST',
@@ -39,13 +48,7 @@ const saveStop = data => {
     method: 'POST',
     headers: headers(),
     body: JSON.stringify(data)
-  }).then(response =>
-    response.json().then(data => ({
-      data: data,
-      status: response.status
-    })
-    )
-  )
+  })
 }
 
 const editUser = (data, id) => {
@@ -78,6 +81,7 @@ export const api = {
   },
   stop: {
     closest,
-    saveStop
+    saveStop,
+    getUserStops
   }
 };

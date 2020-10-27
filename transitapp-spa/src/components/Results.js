@@ -22,7 +22,7 @@ class Results extends Component {
                     <i className="fa fa-bus mr-2"></i>
                     <p>{stop.stopName}</p>
                 </div>
-                {this.props.loggedIn? <button onClick={this.props.reset} className="btn btn-success btn-sm mr-auto">Save Stop</button>: null}
+                {this.props.loggedIn? <button onClick={() => this.props.save(stop.id)} className="btn btn-success btn-sm mr-auto">Save Stop</button>: null}
             </li>)
     }
 

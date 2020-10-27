@@ -14,7 +14,8 @@ class NavBar extends PureComponent {
 
     handleLogout = () => {
         localStorage.clear()
-        window.location.reload();
+        this.props.history.push("/home");
+        // window.location.reload();
     }
 
     handleChange = (event) => {
@@ -49,7 +50,7 @@ class NavBar extends PureComponent {
                 <div className="container-fluid row">
                     <Link to='/home' className="navbar-brand">King County Transit App</Link>
                     <ul className="navbar-nav mr-auto">
-                        {loggedIn ? <Link to='/saved' ><li className="nav-item nav-link"> Saved Bus Stops</li></Link> : null}
+                        {loggedIn ? <Link to='/stops' ><li className="nav-item nav-link"> Saved Bus Stops</li></Link> : null}
                         <Link to='/search'><li className="nav-item nav-link">Search For a Stop</li></Link>
                     </ul>
                     {loggedIn ?
