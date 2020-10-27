@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { api } from '../services/api';
 import LeafletMap from './LeaftletMap'
+import Modal from './Modal'
 
 class Results extends Component {
     state = {
-        stops: []
+        stops: [],
+        showModal: false,
+        id:''
     }
 
     componentDidMount() {
@@ -15,6 +18,13 @@ class Results extends Component {
         )
     }
 
+    clickSave= id => {
+        this.setState({
+            id: id,
+            showModal: true
+        })
+    }
+
     makeList = () => {
         return this.state.stops.map(stop =>
             <li className="mb-3">
@@ -22,7 +32,7 @@ class Results extends Component {
                     <i className="fa fa-bus mr-2"></i>
                     <p>{stop.stopName}</p>
                 </div>
-                {this.props.loggedIn? <button onClick={() => this.props.save(stop.id)} className="btn btn-success btn-sm mr-auto">Save Stop</button>: null}
+                {this.props.loggedIn? <button onClick={() => this.clickSave(stop.id)} className="btn btn-success btn-sm mr-auto">Save Stop</button>: null}
             </li>)
     }
 
@@ -30,6 +40,7 @@ class Results extends Component {
         const { stops } = this.state
         return (
             <div className="container mt-3 pt-3 mb-3" style={{ "border": "solid","backgroundColor": "rgba(255, 255, 255,0.8)" }}>
+                {this.state.showModal? <Modal save={this.props.save} id= {this.state.id} ></Modal>: null}
                 <div className="row">
                     <div className="col-sm-4">
                         <h3> Closest Bus Stops To {this.props.name}: </h3>

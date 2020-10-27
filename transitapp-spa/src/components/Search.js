@@ -30,11 +30,11 @@ export class Search extends Component {
         this.setState({ address: "" })
     }
 
-    save = (id) => {
+    save = (id, label) => {
         const data = {
             stopId: id,
             userId: this.props.loggedIn.nameid,
-            label: "Home"
+            label: label
         }
         api.stop.saveStop(data).then(r =>
             this.setState({ address: "" })
