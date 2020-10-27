@@ -2,6 +2,10 @@ using System.Threading.Tasks;
 using TransitApp.API.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using System;
+using TransitApp.API.Models;
+using TransitApp.API.Dtos;
 
 namespace TransitApp.API.Controllers
 {
@@ -22,6 +26,33 @@ namespace TransitApp.API.Controllers
             float lon= float.Parse(location.Substring(9,9));
             var Stops = await _repo.GetClosestStops(lat,-lon);
             return Ok(Stops);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateUser(UserStopDto Data)
+        {
+            if (Data.UserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                 return Unauthorized();
+ 
+                var userFromRepo = await _repo.GetUser(Data.UserId);
+                var stopFromRepo = await _repo.GetStop(Data.StopId);
+
+                var userStop= new UserStop {
+                    User= userFromRepo,
+                    UserId= userFromRepo.Id,
+                    Stop=stopFromRepo,
+                    StopId=stopFromRepo.Id,
+                    Label=Data.Label
+                };
+  
+               _repo.Add(userStop);
+ 
+                if (await _repo.SaveAll())
+                {
+                    return NoContent();
+                }
+                throw new Exception($"Updateing failed on save");
+            
         }
     }
 }

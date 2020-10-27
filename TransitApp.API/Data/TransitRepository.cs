@@ -31,6 +31,12 @@ namespace TransitApp.API.Data
             return user;
         }
 
+        public async Task<Stop> GetStop(int id)
+        {
+            var Stop = await _context.Stops.Include(p => p.UserStops).ThenInclude(x => x.User).FirstOrDefaultAsync(u => u.Id == id);
+            return Stop;
+        }
+
         public async Task<IEnumerable<Stop>> GetClosestStops(double lat, double lon)
         {
             var coord = new GeoCoordinate(lat, lon);
