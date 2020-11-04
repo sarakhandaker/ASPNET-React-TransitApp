@@ -51,6 +51,14 @@ const saveStop = data => {
   })
 }
 
+const deleteStop = data => {
+  return fetch(`${API_ROOT}stops`, {
+    method: 'DELETE',
+    headers: headers(),
+    body: JSON.stringify(data)
+  })
+}
+
 const editUser = (data, id) => {
   return fetch(`${API_ROOT}/api/v1/users/${id}`, {
     method: 'PATCH',
@@ -82,6 +90,7 @@ export const api = {
   stop: {
     closest,
     saveStop,
+    deleteStop,
     getUserStops
   }
 };
