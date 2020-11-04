@@ -68,9 +68,16 @@ namespace TransitApp.API.Controllers
             if (!user.UserStops.Any(s => s.Stop.Id == id))
                 return Unauthorized();
 
-            var userStopid= user.UserStops.FirstOrDefault(s => s.Stop.Id == id);
+            var userStopToFind= user.UserStops.FirstOrDefault(s => s.Stop.Id == id);
 
-            var userStop = await _repo.GetUserStop(userStopid);
+            var userStop = await _repo.GetUserStop(userStopToFind.Id);
+
+            _repo.Delete(userStop);
+
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Failed to Delete UserStop");
         }
 
     }
