@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System;
 using TransitApp.API.Models;
 using TransitApp.API.Dtos;
+using System.Linq;
 
 namespace TransitApp.API.Controllers
 {
@@ -54,5 +55,19 @@ namespace TransitApp.API.Controllers
                 throw new Exception($"Updateing failed on save");
             
         }
+
+        [HttpDelete("{id}")]
+
+        public async Task<IActionResult> DeleteStop(int userId, int id) 
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                 return Unauthorized();
+
+            var user = await _repo.GetUser(userId);
+
+            if (!user.UserStops.Any(s => s.Stop.Id == id))
+                return Unauthorized();
+        }
+
     }
 }

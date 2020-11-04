@@ -51,11 +51,10 @@ const saveStop = data => {
   })
 }
 
-const deleteStop = data => {
-  return fetch(`${API_ROOT}stops`, {
+const deleteStop = id => {
+  return fetch(`${API_ROOT}stops/${id}`, {
     method: 'DELETE',
-    headers: headers(),
-    body: JSON.stringify(data)
+    headers: headers()
   })
 }
 

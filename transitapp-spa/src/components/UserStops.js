@@ -17,10 +17,7 @@ class UserStops extends Component {
     }
     
     handleDelete = id => {
-      const data= {
-            id: id
-        }
-        api.handleDelete(data).then( r => {
+        api.handleDelete(id).then( r => {
             let stops=this.state.user.UserStops.filter(stop => stop.id !== id)
             let user={...this.state.user, UserStops: stops}
             this.setState({user: user}) 
