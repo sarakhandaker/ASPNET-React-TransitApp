@@ -31,6 +31,12 @@ namespace TransitApp.API.Data
             return user;
         }
 
+        public async Task<UserStop> GetUserStop(int id)
+        {
+            var userStop = await _context.UserStop.Include(p => p.Stop).FirstOrDefaultAsync(u => u.Id == id);
+            return userStop;
+        }
+
         public async Task<Stop> GetStop(int id)
         {
             var Stop = await _context.Stops.Include(p => p.UserStops).ThenInclude(x => x.User).FirstOrDefaultAsync(u => u.Id == id);

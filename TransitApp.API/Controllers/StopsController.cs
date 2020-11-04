@@ -67,6 +67,10 @@ namespace TransitApp.API.Controllers
 
             if (!user.UserStops.Any(s => s.Stop.Id == id))
                 return Unauthorized();
+
+            var userStopid= user.UserStops.FirstOrDefault(s => s.Stop.Id == id);
+
+            var userStop = await _repo.GetUserStop(userStopid);
         }
 
     }
