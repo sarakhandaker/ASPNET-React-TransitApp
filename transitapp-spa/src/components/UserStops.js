@@ -15,6 +15,20 @@ class UserStops extends Component {
     componentDidUpdate() {
             this.getUsers()
     }
+    
+    handleDelete = id => {
+      const data= {
+            id: id
+        }
+        api.handleDelete(data).then( r => {
+            let stops=this.state.user.UserStops.filter(stop => stop.id !== id)
+            let user={...this.state.user, UserStops: stops}
+            this.setState({user: user}) 
+        }
+        )
+    }
+
+
     makeList = () => {
         return this.state.user.userStops.map(stop =>
             <li key={stop.id} className="mb-3">
@@ -22,7 +36,7 @@ class UserStops extends Component {
                     <i className="fa fa-bus mr-2"></i>
                     <p><strong>{stop.label}</strong> - {stop.stop.stopName}</p>
                 </div>
-                <button onClick={this.props.reset} className="btn btn-success btn-sm mr-auto">Delete Stop</button>
+                <button onClick={()=> this.handleDelete(stop.id)} className="btn btn-success btn-sm mr-auto">Delete Stop</button>
             </li>)
     }
 
