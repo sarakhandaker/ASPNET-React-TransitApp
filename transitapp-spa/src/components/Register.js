@@ -59,8 +59,8 @@ class Register extends PureComponent {
                         </div>
 
                         <div className="form-group text-center">
-                            <button className="btn btn-success" type="submit">Register</button>
-                            <button className="btn btn-info" type="button" onClick={this.toggleRegister}>Cancel</button>
+                            <button className="btn btn-success mr-2" type="submit">Register</button>
+                            <button className="btn btn-info ml-2" type="button" onClick={this.toggleRegister}>Cancel</button>
                         </div>
                     </form>
                     :
@@ -70,7 +70,7 @@ class Register extends PureComponent {
                             <p className="lead">Come on in... All you need to do is sign up!</p>
                             <div className="text-center">
                                 <button className="btn btn-primary btn-lg mr-2" onClick={this.toggleRegister}>Register</button>
-                                <button className="btn btn-info btn-lg">Learn more</button>
+                                <button className="btn btn-info btn-lg ml-2">Learn more</button>
                             </div>
                         </div>
 
