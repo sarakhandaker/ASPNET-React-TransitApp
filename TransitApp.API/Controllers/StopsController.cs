@@ -56,29 +56,5 @@ namespace TransitApp.API.Controllers
             
         }
 
-        [HttpDelete("{id}")]
-
-        public async Task<IActionResult> DeleteStop(int userId, int id) 
-        {
-            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-                 return Unauthorized();
-
-            var user = await _repo.GetUser(userId);
-
-            if (!user.UserStops.Any(s => s.Stop.Id == id))
-                return Unauthorized();
-
-            var userStopToFind= user.UserStops.FirstOrDefault(s => s.Stop.Id == id);
-
-            var userStop = await _repo.GetUserStop(userStopToFind.Id);
-
-            _repo.Delete(userStop);
-
-            if (await _repo.SaveAll())
-                return Ok();
-
-            return BadRequest("Failed to Delete UserStop");
-        }
-
     }
 }

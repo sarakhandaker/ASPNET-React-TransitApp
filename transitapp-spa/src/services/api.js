@@ -51,8 +51,8 @@ const saveStop = data => {
   })
 }
 
-const deleteStop = id => {
-  return fetch(`${API_ROOT}stops/${id}`, {
+const deleteStop = (userId, id) => {
+  return fetch(`${API_ROOT}users/${id}`, {
     method: 'DELETE',
     headers: headers()
   })
