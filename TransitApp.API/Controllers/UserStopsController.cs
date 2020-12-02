@@ -57,10 +57,10 @@ namespace TransitApp.API.Controllers
 
             var user = await _repo.GetUser(userId);
 
-            if (!user.UserStops.Any(s => s.Stop.Id == id))
+            if (!user.UserStops.Any(s => s.Id == id))
                 return Unauthorized();
 
-            var userStopToFind= user.UserStops.FirstOrDefault(s => s.Stop.Id == id);
+            var userStopToFind= user.UserStops.FirstOrDefault(s => s.Id == id);
 
             var userStop = await _repo.GetUserStop(userStopToFind.Id);
 
