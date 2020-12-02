@@ -10,7 +10,7 @@ const UserStops = props => {
     }, [props.id])
 
     const handleDelete = id => {
-        api.handleDelete(id).then(r => {
+        api.stop.deleteStop(id).then(r => {
             let stops = user.UserStops.filter(stop => stop.id !== id)
             this.setUser({ ...user, UserStops: stops })
         }
