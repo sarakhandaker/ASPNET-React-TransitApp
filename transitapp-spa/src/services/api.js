@@ -52,7 +52,7 @@ const saveStop = data => {
 }
 
 const deleteStop = (userId, id) => {
-  return fetch(`${API_ROOT}users/${id}`, {
+  return fetch(`${API_ROOT}users/${userId}/stops/${id}`, {
     method: 'DELETE',
     headers: headers()
   })
