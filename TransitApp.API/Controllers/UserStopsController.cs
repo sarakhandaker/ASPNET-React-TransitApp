@@ -21,32 +21,32 @@ namespace TransitApp.API.Controllers
             _repo = repo;
         }
 
-        // [HttpPost]
-        // public async Task<IActionResult> UpdateUser(UserStopDto Data)
-        // {
-        //     if (Data.UserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-        //          return Unauthorized();
+        [HttpPost]
+        public async Task<IActionResult> UpdateUser(UserStopDto Data)
+        {
+            if (Data.UserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                 return Unauthorized();
  
-        //         var userFromRepo = await _repo.GetUser(Data.UserId);
-        //         var stopFromRepo = await _repo.GetStop(Data.StopId);
+                var userFromRepo = await _repo.GetUser(Data.UserId);
+                var stopFromRepo = await _repo.GetStop(Data.StopId);
 
-        //         var userStop= new UserStop {
-        //             User= userFromRepo,
-        //             UserId= userFromRepo.Id,
-        //             Stop=stopFromRepo,
-        //             StopId=stopFromRepo.Id,
-        //             Label=Data.Label
-        //         };
+                var userStop= new UserStop {
+                    User= userFromRepo,
+                    UserId= userFromRepo.Id,
+                    Stop=stopFromRepo,
+                    StopId=stopFromRepo.Id,
+                    Label=Data.Label
+                };
   
-        //        _repo.Add(userStop);
+               _repo.Add(userStop);
  
-        //         if (await _repo.SaveAll())
-        //         {
-        //             return NoContent();
-        //         }
-        //         throw new Exception($"Updateing failed on save");
+                if (await _repo.SaveAll())
+                {
+                    return NoContent();
+                }
+                throw new Exception($"Updateing failed on save");
             
-        // }
+        }
 
         [HttpDelete("{id}")]
 
