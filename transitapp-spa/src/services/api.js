@@ -21,7 +21,7 @@ const login = data => {
 }
 
 const getUserStops = id => {
-  return fetch(`${API_ROOT}users/${id}`, {
+  return fetch(`${API_ROOT}users/${id}/stops`, {
     method: 'GET',
     headers: headers()
   }).then(response => response.json()

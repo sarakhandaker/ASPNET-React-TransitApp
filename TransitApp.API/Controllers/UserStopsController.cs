@@ -21,10 +21,10 @@ namespace TransitApp.API.Controllers
             _repo = repo;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetUser(int id)
+        [HttpGet]
+        public async Task<IActionResult> GetUser(int userId)
         {
-            var user = await _repo.GetUser(id);
+            var user = await _repo.GetUser(userId);
             return Ok(user.UserStops);
         }
 
