@@ -2,22 +2,21 @@ import React, { useState, useEffect } from 'react'
 import { api } from '../services/api';
 
 const UserStops = props => {
-    let [user, setUser] = useState([])
+    let [userStops, setUserStops] = useState([])
 
     useEffect(() => {
         if (props.id) 
-            api.stop.getUserStops(props.id).then(r => setUser(r.data))
+            api.stop.getUserStops(props.id).then(r => setUserStops(r.data))
     }, [props.id])
 
     const handleDelete = id => {
         api.stop.deleteStop(props.id, id)
-        let stops = user.userStops.filter(stop => stop.id !== id)
         debugger
-        setUser({ ...user, userStops: stops })
+        setUserStops(userStops.filter(stop => stop.id !== id))
     }
 
     const makeList = () => {
-        return user.userStops.map((stop, i) =>
+        return userStops.map((stop, i) =>
             <li key={i} className="mb-3">
                 <div className="row" >
                     <i className="fa fa-bus mr-2"></i>
@@ -31,7 +30,7 @@ const UserStops = props => {
         <h3> Your Saved Bus Stops: </h3>
         <hr />
         <ul style={{ "listStyle": "none" }}>
-            {user.userStops ? makeList() : null}
+            {userStops ? makeList() : null}
         </ul>
     </div>
     );
