@@ -52,14 +52,15 @@ namespace TransitApp.API.Migrations
                 name: "UserStop",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     UserId = table.Column<int>(nullable: false),
                     StopId = table.Column<int>(nullable: false),
-                    Id = table.Column<int>(nullable: false),
                     Label = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserStop", x => new { x.UserId, x.StopId });
+                    table.PrimaryKey("PK_UserStop", x => x.Id);
                     table.ForeignKey(
                         name: "FK_UserStop_Stops_StopId",
                         column: x => x.StopId,
@@ -78,6 +79,11 @@ namespace TransitApp.API.Migrations
                 name: "IX_UserStop_StopId",
                 table: "UserStop",
                 column: "StopId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserStop_UserId",
+                table: "UserStop",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

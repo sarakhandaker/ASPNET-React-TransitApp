@@ -9,7 +9,7 @@ using TransitApp.API.Data;
 namespace TransitApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201026224051_initialCommit")]
+    [Migration("20201203224208_initialCommit")]
     partial class initialCommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,21 +93,24 @@ namespace TransitApp.API.Migrations
 
             modelBuilder.Entity("TransitApp.API.Models.UserStop", b =>
                 {
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("StopId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Label")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("UserId", "StopId");
+                    b.Property<int>("StopId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("StopId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserStop");
                 });

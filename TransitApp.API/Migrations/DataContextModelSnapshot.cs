@@ -91,21 +91,24 @@ namespace TransitApp.API.Migrations
 
             modelBuilder.Entity("TransitApp.API.Models.UserStop", b =>
                 {
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("StopId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Label")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("UserId", "StopId");
+                    b.Property<int>("StopId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("StopId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserStop");
                 });

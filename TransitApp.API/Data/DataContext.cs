@@ -15,8 +15,6 @@ namespace TransitApp.API.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserStop>()
-                .HasKey(us => new { us.UserId, us.StopId });
-            modelBuilder.Entity<UserStop>()
                 .HasOne(us => us.User)
                 .WithMany(u => u.UserStops)
                 .HasForeignKey(us => us.UserId);
