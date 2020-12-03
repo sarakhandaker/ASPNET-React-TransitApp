@@ -10,10 +10,10 @@ const UserStops = props => {
     }, [props.id])
 
     const handleDelete = id => {
-        api.stop.deleteStop(props.id, id).then(r => {
-            let stops = user.userStops.filter(stop => stop.id !== id)
-            setUser({ ...user, userStops: stops })
-        })
+        api.stop.deleteStop(props.id, id)
+        let stops = user.userStops.filter(stop => stop.id !== id)
+        debugger
+        setUser({ ...user, userStops: stops })
     }
 
     const makeList = () => {

@@ -21,6 +21,13 @@ namespace TransitApp.API.Controllers
             _repo = repo;
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUser(int id)
+        {
+            var user = await _repo.GetUser(id);
+            return Ok(user.UserStops);
+        }
+
         [HttpPost]
         public async Task<IActionResult> UpdateUser(UserStopDto Data)
         {
