@@ -43,8 +43,8 @@ const register = data => {
   )
 }
 
-const saveStop = data => {
-  return fetch(`${API_ROOT}stops`, {
+const saveStop = data=> {
+  return fetch(`${API_ROOT}users/${data.userId}/stops`, {
     method: 'POST',
     headers: headers(),
     body: JSON.stringify(data)
