@@ -27,15 +27,17 @@ const UserStops = props => {
     }
 
     return (<div className="container mt-3 pt-3 mb-3" style={{ "border": "solid", "backgroundColor": "rgba(255, 255, 255,0.8)" }}>
-        <div className="col-sm-8">
-            <h3> Your Saved Bus Stops: </h3>
-            <hr />
-            <ul style={{ "listStyle": "none" }}>
-                {userStops ? makeList() : null}
-            </ul>
-        </div>
-        <div className="col-sm-8">
-           {userStops ? <LeafletMap address={{lat:47.608013 , lng:	-122.335167}} stops={userStops.map(s=> s.stop)}></LeafletMap>: null}
+        <div className="row">
+            <div className="col-sm-4">
+                <h3> Your Saved Bus Stops: </h3>
+                <hr />
+                <ul style={{ "listStyle": "none" }}>
+                    {userStops ? makeList() : null}
+                </ul>
+            </div>
+            <div className="col-sm-8">
+                {userStops ? <LeafletMap address={{ lat: 47.608013, lng: -122.335167 }} stops={userStops.map(s => s.stop)}></LeafletMap> : null}
+            </div>
         </div>
     </div>
     );
