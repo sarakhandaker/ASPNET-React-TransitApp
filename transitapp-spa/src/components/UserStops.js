@@ -35,7 +35,7 @@ const UserStops = props => {
             </ul>
         </div>
         <div className="col-sm-8">
-           {userStops? <LeafletMap address={props.address} stops={userStops.map(s=> s.stop)}></LeafletMap>: null}
+           {userStops ? <LeafletMap address={{lat:47.608013 , lng:	-122.335167}} stops={userStops.map(s=> s.stop)}></LeafletMap>: null}
         </div>
     </div>
     );
