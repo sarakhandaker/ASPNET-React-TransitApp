@@ -9,6 +9,7 @@ namespace TransitApp.API.Models
     public DateTime ArrivalTime { get; set; }
     public DateTime DepartureTime { get; set; }
     public int StopId { get; set; }
+    public Stop Stop {get; set;}
     public string StopSequence { get; set; }
     public string StopHeadsign { get; set; }
     public string PickupType { get; set; }

@@ -11,6 +11,7 @@ namespace TransitApp.API.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Stop> Stops { get; set; }
         public DbSet<UserStop> UserStop { get; set; }
+        public DbSet<StopTime> StopTimes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

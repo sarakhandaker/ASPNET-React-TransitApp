@@ -17,6 +17,7 @@ namespace TransitApp.API.Models
     public string ParentStation { get; set; }
     public string StopTimezone { get; set; }
     public ICollection<UserStop> UserStops {get; set;}
+    public ICollection<StopTime> StopTimes {get; set;}
         
     }
 }
