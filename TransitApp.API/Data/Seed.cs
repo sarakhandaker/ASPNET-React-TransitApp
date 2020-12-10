@@ -17,6 +17,13 @@ namespace TransitApp.API.Data
                     context.Stops.Add(stop);
                 }
 
+                var stopTimesData = System.IO.File.ReadAllText("Data/stopTimesSeedData.json");
+                var stopTimes = JsonConvert.DeserializeObject<List<StopTime>>(stopTimesData);
+                foreach (StopTime stopTime in stopTimes)
+                {
+                    context.StopTimes.Add(stopTime);
+                }
+
                 context.SaveChanges();
             }
         }
