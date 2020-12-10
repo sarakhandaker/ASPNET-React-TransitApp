@@ -22,12 +22,8 @@ namespace TransitApp.API.Data
 
                 var stopTimesData = System.IO.File.ReadAllText("Data/stopTimesSeedData.json");
                 var stopTimes = JsonConvert.DeserializeObject<List<StopTime>>(stopTimesData, new IsoDateTimeConverter { DateTimeFormat = "HH:mm:ss" });
-                // MyObject obj = JsonConvert.DeserializeObject<MyObject>(jsonString, 
-                //    new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy" });
                 foreach (StopTime stopTime in stopTimes)
                 {
-                    // stopTime.ArrivalTime = DateTime.ParseExact("ArrivalTime", "HH:mm:ss", CultureInfo.InvariantCulture);
-                    // stopTime.DepartureTime = DateTime.ParseExact("DepartureTime", "HH:mm:ss", CultureInfo.InvariantCulture);
                     context.StopTimes.Add(stopTime);
                 }
 

@@ -11,7 +11,7 @@ data_arr.each do |each_stop|
     stopObjects.push({
         "TripId": each_stop[0].to_i, 
         "ArrivalTime": each_stop[1], 
-        "DepartureTime": each_stop[2], 
+        # "DepartureTime": each_stop[2], 
         "StopId": each_stop[3].to_i, 
         "StopSequence": each_stop[4], 
         "StopHeadsign": each_stop[5], 
