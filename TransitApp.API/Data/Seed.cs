@@ -24,7 +24,9 @@ namespace TransitApp.API.Data
                 var stopTimes = JsonConvert.DeserializeObject<List<StopTime>>(stopTimesData, new IsoDateTimeConverter { DateTimeFormat = "HH:mm:ss" });
                 foreach (StopTime stopTime in stopTimes)
                 {
+                    if (context.Stops.Any(s => s.Id == stopTime.StopId)){
                     context.StopTimes.Add(stopTime);
+                    }
                 }
 
                 context.SaveChanges();
