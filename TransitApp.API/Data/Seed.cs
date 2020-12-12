@@ -20,12 +20,14 @@ namespace TransitApp.API.Data
                     context.Stops.Add(stop);
                 }
 
+                context.SaveChanges();
+
                 var stopTimesData = System.IO.File.ReadAllText("Data/stopTimesSeedData.json");
                 var stopTimes = JsonConvert.DeserializeObject<List<StopTime>>(stopTimesData, new IsoDateTimeConverter { DateTimeFormat = "HH:mm:ss" });
                 foreach (StopTime stopTime in stopTimes)
                 {
                     if (context.Stops.Any(s => s.Id == stopTime.StopId)){
-                    context.StopTimes.Add(stopTime);
+                        context.StopTimes.Add(stopTime);
                     }
                 }
 
