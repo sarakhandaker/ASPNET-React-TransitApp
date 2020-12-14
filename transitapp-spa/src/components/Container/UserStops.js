@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { api } from '../services/api';
-import LeafletMap from './LeaftletMap'
-import SingleUserStop from './SingleUserStop'
+import { api } from '../../services/api';
+import LeafletMap from '../Presentational/LeaftletMap'
+import SingleUserStop from '../Presentational/SingleUserStop'
 
 const UserStops = props => {
     let [userStops, setUserStops] = useState([])

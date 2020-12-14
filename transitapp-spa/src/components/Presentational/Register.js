@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import {Alert} from 'react-bootstrap'
-import { api } from '../services/api'
+import { api } from '../../services/api'
 
 class Register extends PureComponent {
     state = {

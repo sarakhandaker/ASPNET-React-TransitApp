@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Alert } from 'react-bootstrap'
-import StopSearchForm from './StopSearchForm'
-import Results from './Results'
-import { api } from '../services/api'
+import StopSearchForm from '../Presentational/StopSearchForm'
+import Results from '../Presentational/Results'
+import { api } from '../../services/api'
 const URL = `http://www.mapquestapi.com/geocoding/v1/address?key=${process.env.REACT_APP_KEY}&location=`
 
 export class Search extends Component {

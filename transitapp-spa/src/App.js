@@ -2,9 +2,9 @@
 import React, {Fragment } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 import NavBar from './components/Navbar'
-import Home from './components/Home'
-import Search from './components/Search'
-import UserStops from './components/UserStops'
+import Home from './components/Container/Home'
+import Search from './components/Container/Search'
+import UserStops from './components/Container/UserStops'
 import './App.css';
 import { useJwt } from "react-jwt";
 const token = localStorage.getItem('token');

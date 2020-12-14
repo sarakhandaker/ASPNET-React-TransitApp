@@ -1,5 +1,5 @@
 import React from 'react';
-import Register from './Register';
+import Register from '../Presentational/Register';
 import { useJwt } from "react-jwt";
 const token = localStorage.getItem('token');
 
