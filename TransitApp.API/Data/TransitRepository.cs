@@ -4,6 +4,7 @@ using TransitApp.API.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Device.Location;
 using System.Linq;
+using System;
 
 namespace TransitApp.API.Data
 {
@@ -55,6 +56,11 @@ namespace TransitApp.API.Data
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public Task<IEnumerable<DateTime>> GetTimes(int stopId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

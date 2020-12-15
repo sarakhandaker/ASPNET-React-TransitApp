@@ -17,7 +17,7 @@ namespace TransitApp.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetNextTimes(int id)
         {
-            var times = await _repo.GetTimes(int id);
+            var times = await _repo.GetTimes(id);
             return Ok(times);
         }
 

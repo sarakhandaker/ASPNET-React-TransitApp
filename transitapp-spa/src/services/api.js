@@ -10,37 +10,36 @@ const headers = () => {
   };
 };
 
-const login = data => {
-  return fetch(`${API_ROOT}auth/login`, {
+const login = async data => {
+  const response = await fetch(`${API_ROOT}auth/login`, {
     method: 'POST',
     headers: headers(),
     body: JSON.stringify(data)
-  }).then(response => response.json()
-    .then(data => ({ data: data, status: response.status }))
-  )
+  });
+  const data_1 = await response.json();
+  return ({ data: data_1, status: response.status });
 }
 
-const getUserStops = id => {
-  return fetch(`${API_ROOT}users/${id}/stops`, {
+const getUserStops = async id => {
+  const response = await fetch(`${API_ROOT}users/${id}/stops`, {
     method: 'GET',
     headers: headers()
-  }).then(response => response.json()
-    .then(data => ({ data: data, status: response.status }))
-  )
+  });
+  const data = await response.json();
+  return ({ data: data, status: response.status });
 }
 
-const register = data => {
-  return fetch(`${API_ROOT}auth/register`, {
+const register = async data => {
+  const response = await fetch(`${API_ROOT}auth/register`, {
     method: 'POST',
     headers: headers(),
     body: JSON.stringify(data)
-  }).then(response =>
-    response.json().then(data => ({
-      data: data,
-      status: response.status
-    })
-    )
-  )
+  });
+  const data_1 = await response.json();
+  return ({
+    data: data_1,
+    status: response.status
+  });
 }
 
 const saveStop = data=> {
@@ -58,26 +57,37 @@ const deleteStop = (userId, id) => {
   })
 }
 
-const editUser = (data, id) => {
-  return fetch(`${API_ROOT}/api/v1/users/${id}`, {
+const editUser = async (data, id) => {
+  const r = await fetch(`${API_ROOT}/api/v1/users/${id}`, {
     method: 'PATCH',
     headers: headers(),
     body: JSON.stringify(data)
-  })
-    .then(r => r.json())
+  });
+  return await r.json();
 }
 
-const closest = (address) => {
-  return fetch(`${API_ROOT}stops/${address}`, {
+const closest = async address => {
+  const response = await fetch(`${API_ROOT}stops/${address}`, {
     method: 'GET',
     headers: headers()
-  }).then(response =>
-    response.json().then(data => ({
-      data: data,
-      status: response.status
-    })
-    )
-  )
+  });
+  const data = await response.json();
+  return ({
+    data: data,
+    status: response.status
+  });
+}
+
+const times = async id => {
+  const response = await fetch(`${API_ROOT}stoptimes/${id}`, {
+    method: 'GET',
+    headers: headers()
+  });
+  const data = await response.json();
+  return ({
+    data: data,
+    status: response.status
+  });
 }
 
 export const api = {
@@ -90,6 +100,7 @@ export const api = {
     closest,
     saveStop,
     deleteStop,
-    getUserStops
+    getUserStops,
+    times
   }
 };
