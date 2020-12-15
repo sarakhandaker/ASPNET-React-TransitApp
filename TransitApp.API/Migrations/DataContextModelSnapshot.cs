@@ -69,9 +69,6 @@ namespace TransitApp.API.Migrations
                     b.Property<DateTime>("ArrivalTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DepartureTime")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("DropOffType")
                         .HasColumnType("TEXT");
 
