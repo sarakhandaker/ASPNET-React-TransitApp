@@ -42,7 +42,7 @@ const register = async data => {
   });
 }
 
-const saveStop = data=> {
+const saveStop = data => {
   return fetch(`${API_ROOT}users/${data.userId}/stops`, {
     method: 'POST',
     headers: headers(),

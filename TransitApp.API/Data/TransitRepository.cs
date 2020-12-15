@@ -58,9 +58,12 @@ namespace TransitApp.API.Data
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public Task<IEnumerable<DateTime>> GetTimes(int stopId)
+        public async Task<IEnumerable<DateTime>> GetTimes(int stopId)
         {
-            throw new NotImplementedException();
+            var stopTimes = await _context.StopTimes.Where<StopTime>(st => st.StopId == stopId).ToListAsync();
+            var times= stopTimes.Select(st => st.ArrivalTime);
+
+            return times;
         }
     }
 }
