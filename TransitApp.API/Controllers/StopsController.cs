@@ -1,12 +1,6 @@
 using System.Threading.Tasks;
 using TransitApp.API.Data;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using System;
-using TransitApp.API.Models;
-using TransitApp.API.Dtos;
-using System.Linq;
 
 namespace TransitApp.API.Controllers
 {
