@@ -3,12 +3,14 @@ import {api} from '../../services/api'
 
 export default class SingleUserStop extends Component {
     state= {
-        showtimes: false
+        showtimes: false,
+        times:[]
     }
 
     showTimes= id =>{
-        console.log(id)
-        api.stop.times(id).then( r => console.log(r))
+        api.stop.times(id).then( 
+            r => this.setState({times: r.data})
+        )
     }
 
     render() {
