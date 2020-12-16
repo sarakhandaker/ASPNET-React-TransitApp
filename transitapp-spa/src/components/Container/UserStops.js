@@ -21,7 +21,7 @@ const UserStops = props => {
     }
 
     return (<div className="container mt-3 pt-3 mb-3" style={{ "border": "solid", "backgroundColor": "rgba(255, 255, 255,0.8)" }}>
-        <div className="row">
+        <div className="row mb-3">
             <div className="col-sm-4">
                 <h3> Your Saved Bus Stops: </h3>
                 <hr />
