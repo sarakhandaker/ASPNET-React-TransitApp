@@ -7,7 +7,7 @@ class Results extends Component {
     state = {
         stops: [],
         showModal: false,
-        id:''
+        id: ''
     }
 
     componentDidMount() {
@@ -18,7 +18,7 @@ class Results extends Component {
         )
     }
 
-    clickSave= id => {
+    clickSave = id => {
         this.setState({
             id: id,
             showModal: true
@@ -29,23 +29,27 @@ class Results extends Component {
         return this.state.stops.map(stop =>
             <li key={stop.id} className="mb-3">
                 <div className="row" >
-                    <i className="fa fa-bus mr-2"></i>
-                    <p>{stop.stopName}</p>
+                    <div className="col-sm-10">
+                        <p><span><i className="fa fa-bus mr-2"></i></span> <strong>{stop.stopName}</strong></p>
+                        <p>- miles from address</p>
+                    </div>
+                    <div className="col-sm-2 p-0">
+                        {this.props.loggedIn ? <button onClick={() => this.clickSave(stop.id)} className="btn btn-success btn-sm">Save Stop</button> : null}
+                    </div>
                 </div>
-                {this.props.loggedIn? <button onClick={() => this.clickSave(stop.id)} className="btn btn-success btn-sm mr-auto">Save Stop</button>: null}
             </li>)
     }
 
     render() {
         const { stops } = this.state
         return (
-            <div className="container mt-3 pt-3 mb-3" style={{ "border": "solid","backgroundColor": "rgba(255, 255, 255,0.8)" }}>
-                {this.state.showModal? <Modal save={this.props.save} id= {this.state.id} ></Modal>: null}
+            <div className="container mt-3 pt-3 mb-3" style={{ "border": "solid", "backgroundColor": "rgba(255, 255, 255,0.8)" }}>
+                {this.state.showModal ? <Modal save={this.props.save} id={this.state.id} ></Modal> : null}
                 <div className="row">
                     <div className="col-sm-4">
-                        <h3> Closest Bus Stops To {this.props.name}: </h3>
+                        <h4 className="text-center"> {this.props.name} </h4>
                         <hr />
-                        <ul style={{ "listStyle": "none" }}>
+                        <ul className="pl-2" style={{ "listStyle": "none" }}>
                             {stops ? this.makeList() : null}
                         </ul>
                     </div>
