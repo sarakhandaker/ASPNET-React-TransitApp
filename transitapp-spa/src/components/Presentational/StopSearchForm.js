@@ -24,7 +24,7 @@ export class Form extends Component {
             <div className="container mt-5 p-5 text-center" style={{ "backgroundColor": "rgba(255, 255, 255,0.8)" }}>
                 <form onSubmit={this.handleSubmit}>
                     <div className="pb-3">
-                        <h3> Search the Closest Three KC Metro Stops to Any Address</h3>
+                        <h3> Search the Closest KC Metro Stops to Any Address</h3>
                         <hr />
                     </div>
                     <div className="form-group justify-content-md-center row">
