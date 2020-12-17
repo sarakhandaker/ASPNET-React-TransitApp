@@ -23,12 +23,13 @@ class Results extends Component {
     }
 
     makeList = () => {
+        let {lat, lng}= this.props.address
         return this.state.stops.map(stop =>
             <li key={stop.id} className="mb-3">
                 <div className="row" >
                     <div className="col-sm-10">
                         <p><span><i className="fa fa-bus mr-2"></i></span> <strong>{stop.stopName}</strong></p>
-                        <p>- miles from address</p>
+                        <p>{this.getDistance(stop.stopLat, stop.stopLon, lat, lng)}- miles from address</p>
                     </div>
                     <div className="col-sm-2 p-0">
                         {this.props.loggedIn ? <button onClick={() => this.clickSave(stop.id)} className="btn btn-success btn-sm">Save Stop</button> : null}
@@ -37,15 +38,16 @@ class Results extends Component {
             </li>)
     }
 
-    getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
+    getDistance = (lat1, lon1, lat2, lon2) => {
+        console.log(lat1, lon1, lat2, lon2)
         const dLat = (lat2 - lat1) * (Math.PI / 180) // deg2rad
         const dLon = (lon2 - lon1) * (Math.PI / 180)
         var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
             Math.cos((lat1) * (Math.PI / 180)) * Math.cos((lat2) * (Math.PI / 180)) *
             Math.sin(dLon / 2) * Math.sin(dLon / 2)
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        var d = 6371 * c; // Radius of the earth in km-> Distance in km
-        return d;
+        var d = 6371 * c * 0.621371; // Radius of the earth in km-> Distance in miles
+        return d.toFixed(2);
     }
 
     render() {
