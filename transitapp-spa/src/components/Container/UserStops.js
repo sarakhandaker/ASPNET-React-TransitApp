@@ -5,10 +5,14 @@ import SingleUserStop from '../Presentational/SingleUserStop'
 
 const UserStops = props => {
     let [userStops, setUserStops] = useState([])
+    let [address, setAddress] = useState({})
 
     useEffect(() => {
         if (props.id)
             api.stop.getUserStops(props.id).then(r => setUserStops(r.data))
+            .then( r => {
+                
+            })
     }, [props.id])
 
     const handleDelete = id => {
