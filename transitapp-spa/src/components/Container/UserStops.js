@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { api } from '../../services/api';
 import LeafletMap from '../Presentational/LeaftletMap'
 import SingleUserStop from '../Presentational/SingleUserStop'
+import { mapApi } from '../../services/mapApi'
 
 const UserStops = props => {
     let [userStops, setUserStops] = useState([])
@@ -10,10 +11,14 @@ const UserStops = props => {
     useEffect(() => {
         if (props.id)
             api.stop.getUserStops(props.id).then(r => setUserStops(r.data))
-            .then( r => {
-                
-            })
-    }, [props.id])
+                .then(r => {
+                    if (userStops[0]) {
+                        mapApi.GeoLocateAddress(userStops[0].user.address).then(resp => {
+                            setAddress(resp.results[0].locations[0].latLng)
+                        })
+                    }
+                })
+    }, [props.id, userStops])
 
     const handleDelete = id => {
         api.stop.deleteStop(props.id, id)
@@ -21,7 +26,7 @@ const UserStops = props => {
     }
 
     const makeList = () => {
-        return userStops.map((stop, i) => <SingleUserStop key= {i} stop={stop} handleDelete={handleDelete}/>)
+        return userStops.map((stop, i) => <SingleUserStop key={i} stop={stop} handleDelete={handleDelete} />)
     }
 
     return (<div className="container mt-3 pt-3 mb-3" style={{ "border": "solid", "backgroundColor": "rgba(255, 255, 255,0.8)" }}>
@@ -34,7 +39,7 @@ const UserStops = props => {
                 </ul>
             </div>
             <div className="col-sm-8">
-                {userStops ? <LeafletMap address={{ lat: 47.608013, lng: -122.335167 }} stops={userStops.map(s => s.stop)}></LeafletMap> : null}
+                {userStops ? <LeafletMap address={address.lat? address: { lat: 47.608013, lng: -122.335167 }} stops={userStops.map(s => s.stop)}></LeafletMap> : null}
             </div>
         </div>
     </div>
