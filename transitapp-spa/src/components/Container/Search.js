@@ -3,7 +3,7 @@ import { Alert } from 'react-bootstrap'
 import StopSearchForm from '../Presentational/StopSearchForm'
 import Results from '../Presentational/Results'
 import { api } from '../../services/api'
-import {mapApi} from '../../services/mapApi'
+import { mapApi } from '../../services/mapApi'
 
 export class Search extends Component {
 
@@ -14,9 +14,9 @@ export class Search extends Component {
         error: false
     }
 
-    handleSubmit = (address) => {
+    handleSubmit = address => {
         this.setState({ addressName: address })
-        fetch(URL + address).then(resp => resp.json()).then(resp => {
+        mapApi.GeoLocateAddress(address).then(resp => {
             if (resp.results[0].locations[0]) {
                 this.setState({ address: resp.results[0].locations[0].latLng })
             }
